@@ -1,0 +1,24 @@
+The robot rolls forward.
+The robot rolls backward.
+The robot turns to the left.
+The robot turns to the right.
+The robot can stop rolling.
+The robot can find the distance to an obstacle (front, left, right).
+
+
+class Robot
+      forward(dist)
+      backward(dist)
+      turnLeft(rad)
+      turnRight(rad)
+      stop()
+      start()
+      distance(direction)
+      setSpeed(s)
+
+  Variables:
+    speed
+    size
+    heading
+    x, y coordinate
+    
