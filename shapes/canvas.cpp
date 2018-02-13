@@ -3,6 +3,7 @@
 #include <iostream>
 #include "canvas.h"
 #include "term.h"
+#include "point.h"
 
 using namespace std;
 
@@ -55,10 +56,19 @@ Canvas::handleEvent(Event *e)
 	case ENTER:
 	  cursorAddPoint();
 	  break;
+	case 'p':
+	case 'P':
+	  if(working == nullptr) {
+	    working = new Point();
+	    cursorAddPoint();
+	  }
+	  break;
         case ESC:
             if(_parent) ((Application*)_parent)->running(false);
             break;
         }
+
+	display();
     }
 }
 
@@ -160,6 +170,7 @@ Canvas::cursorAddPoint()
 
   //add to the shape
   working->addPoint(cx, cy);
+
 
   //if the shape is complete, add it to the list
   if(working->isComplete()) {
