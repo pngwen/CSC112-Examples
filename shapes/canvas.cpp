@@ -13,6 +13,9 @@ Canvas::Canvas()
     y(1);
     this->cx = 1;
     this->cy = 1;
+
+    //initailly have no working shape
+    working = nullptr;
 }
 
 
@@ -20,6 +23,10 @@ Canvas::Canvas()
 void 
 Canvas::display()
 {
+  //display the shapes
+  for(auto itr = shapeList.begin(); itr != shapeList.end(); itr++) {
+    (*itr)->display();
+  }
     cout << cursorPosition(cx, cy) << '+';
     cout.flush();
 }
@@ -45,6 +52,9 @@ Canvas::handleEvent(Event *e)
         case RIGHT:
             cursorRight();
             break;
+	case ENTER:
+	  cursorAddPoint();
+	  break;
         case ESC:
             if(_parent) ((Application*)_parent)->running(false);
             break;
@@ -139,4 +149,21 @@ Canvas::cursorRight()
     //show the cursor
     cout << cursorPosition(cx, cy) << '+';
     cout.flush();
+}
+
+
+void
+Canvas::cursorAddPoint()
+{
+  //if there is no working shape, return
+  if(working == nullptr) return;
+
+  //add to the shape
+  working->addPoint(cx, cy);
+
+  //if the shape is complete, add it to the list
+  if(working->isComplete()) {
+    shapeList.push_back(working);
+    working = nullptr;  //get ready for the next shape
+  }
 }
