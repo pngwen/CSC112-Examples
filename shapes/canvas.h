@@ -25,7 +25,7 @@ public:
     virtual void cursorDown();
     virtual void cursorLeft();
     virtual void cursorRight();
-
+    virtual void cursorAddPoint();
 protected:
     int cx, cy;     //cursor position
     std::vector<Shape*> shapeList;  
