@@ -12,7 +12,7 @@ public:
 
   //shape specific stuff
   virtual bool isComplete()=0;
-  virtual void addPoint(int x, int y)=0;
+  virtual void addPoint(int _x, int _y)=0;
   
 };
 
