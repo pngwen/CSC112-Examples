@@ -6,18 +6,18 @@
 class Point : public Shape
 {
 public:
-  Point();  //public constructor
+    Point();  //public constructor
   
-  //required widget functions
-  virtual void display();
-  virtual void handleEvent(Event *e);
+    //required widget functions
+    virtual void display();
+    virtual void handleEvent(Event *e);
 
-  //shape specific functions
-  virtual bool isComplete();
-  virtual void addPoint(int _x, int _y);
+    //shape specific functions
+    virtual bool isComplete();
+    virtual void addPoint(int _x, int _y);
   
 private:
-  bool _complete;
+    bool _complete;
 };
 
 #endif

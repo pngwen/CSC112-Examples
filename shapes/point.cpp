@@ -7,34 +7,34 @@ using namespace std;
 
 Point::Point()
 {
-  _complete = false;
+    _complete = false;
 }
 
 
 void Point::display()
 {
-  cout << cursorPosition(x(), y()) << "*";
+    cout << cursorPosition(x(), y()) << "*";
 }
 
 
 void Point::handleEvent(Event *e)
 {
-  //do nothing!
+    //do nothing!
 }
 
 
 
 bool Point::isComplete()
 {
-  return _complete;
+    return _complete;
 }
 
 void Point::addPoint(int _x, int _y)
 {
-  //set the widget position
-  x(_x);
-  y(_y);
+    //set the widget position
+    x(_x);
+    y(_y);
 
-  //we're done!
-  _complete = true;
+    //we're done!
+    _complete = true;
 }
