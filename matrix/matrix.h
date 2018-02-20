@@ -27,6 +27,6 @@ private:
 //external operators
 double operator*(double s, const Matrix &m);  //scalar multiplcation s * m
 std::ostream & operator<<(std::ostream &os, const Matrix &m);   //extraction operator
-std::istream & istream>>(std::istream &is, const Matrix &m);    //insertion operator
+std::istream & operator>>(std::istream &is, const Matrix &m);    //insertion operator
 #endif
 
