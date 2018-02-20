@@ -18,14 +18,15 @@ public:
 
     //operators
     virtual std::vector<double> & operator[](int index);   //returns a row vector reference
+    virtual const std::vector<double> &operator[](int index) const;  //read only version
     virtual Matrix operator+(const Matrix &rhs) const;
     virtual Matrix operator*(double s) const;   //scalar multiplication A * s
 private:
-    virtual std::vector<std::vector<double>> elements;  //matrix elements
+    std::vector<std::vector<double>> elements;  //matrix elements
 };
 
 //external operators
-double operator*(double s, const Matrix &m);  //scalar multiplcation s * m
+Matrix operator*(double s, const Matrix &m);  //scalar multiplcation s * m
 std::ostream & operator<<(std::ostream &os, const Matrix &m);   //insertion operator
 std::istream & operator>>(std::istream &is, Matrix &m);    //extraction operator
 #endif
