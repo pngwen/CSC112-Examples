@@ -72,10 +72,12 @@ static vector<vector<string>> DIGIT = {
 //widget display
 void BigNumber::display()
 {
-    cout << cursorPosition(x(), y());
-
     //display the rows
     for(int i=0; i<height(); i++) {
+	//go to the beginning of the row
+	cout << cursorPosition(x(), y() + i);
+
+	
 	for(int j=0; j<width(); j++) {
 	    if(DIGIT[value()][i][j] == '#') {
 		cout << reverseVideo << ' ' << normal;
@@ -84,6 +86,8 @@ void BigNumber::display()
 	    }
 	}
     }
+
+    cout.flush();
 }
 
 
