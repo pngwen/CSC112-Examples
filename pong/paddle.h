@@ -4,11 +4,13 @@
 #include "event.h"
 #include "widget.h"
 
+const int PADDLE_HEIGHT = 3;
+
 class Paddle : public Widget
 {
 public:
-    Paddle() : Widget(1, 1, 1, 5) { /* left blank */ }
-    Paddle(int _x, int _y) : Widget(_x, _y, 1, 5) { /* left blank */ }
+    Paddle() : Widget(1, 1, 1, PADDLE_HEIGHT) { /* left blank */ }
+    Paddle(int _x, int _y) : Widget(_x, _y, 1, PADDLE_HEIGHT) { /* left blank */ }
 
 
     //widget overrrides
