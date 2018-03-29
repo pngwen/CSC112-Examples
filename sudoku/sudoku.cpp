@@ -38,7 +38,7 @@ Sudoku::~Sudoku()
 bool 
 Sudoku::reject()
 {
-    //TODO
+    return not isValid(puzzle);
 }
     
 
@@ -46,7 +46,20 @@ Sudoku::reject()
 bool 
 Sudoku::solved()
 {
-    //TODO
+    //rejects are not solutions
+    if(reject()) {
+	return false;
+    }
+
+    //if there is a changeable square, then the puzzle is not solved
+    for(auto itr = changeable.begin(); itr != changeable.end(); itr++) {
+	if(*itr) {
+	    return false;
+	}
+    }
+
+    //we have a valid full puzzle
+    return true;
 }
     
 
@@ -55,7 +68,37 @@ Sudoku::solved()
 Candidate *
 Sudoku::next() 
 {
-    //TODO
+    //there are no next positions from a rejected puzzle
+    if(reject()) {
+	return nullptr;
+    }
+
+    //find the next changeable position
+    int pos;
+    for(pos = 0; pos<changeable.size(); pos++) {
+	if(changeable[pos]) {
+	    //stop once we find a changeable position
+	    break;
+	}
+    }
+
+    //increment that changeable position
+    do {
+	puzzle[pos]++;
+	if(puzzle[pos] > 9) {
+	    return nullptr;
+	}
+    } while(not isValid(puzzle));
+
+    //return the new puzzle
+    Sudoku *ncandidate = new Sudoku(puzzle, animate());
+
+    if(animate()) {
+	ncandidate->display();
+	usleep(100000);
+    }
+
+    return ncandidate;
 }
 
 
