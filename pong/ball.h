@@ -23,6 +23,9 @@ public:
     double vy() { return _vy; }
     
 private:
+    //get time with fractional parts
+    double gettime();
+    
     //velocity vector
     double _vx;
     double _vy;
@@ -32,7 +35,7 @@ private:
     double _py;
 
     //keep track of the last time we update
-    long _lastUpdate;
+    double _lastUpdate;
 };
 
 #endif 

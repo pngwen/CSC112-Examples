@@ -14,9 +14,7 @@ Ball::Ball(int _x, int _y) : Widget(_x, _y, 1, 1)
     _py = _y;
 
     //get the current time
-    struct timespec ts;
-    clock_gettime(CLOCK_REALTIME, &ts);
-    _lastUpdate = ts.tv_nsec;
+    _lastUpdate = gettime();
 }
 
 
@@ -37,11 +35,9 @@ Ball::handleEvent(Event *e)
     //work out the elapsed time
     double current;
     double elapsed;
-    struct timespec ts;
-    clock_gettime(CLOCK_REALTIME, &ts);
-    current = ts.tv_nsec;
-    current /= 1.0e9;
+    current = gettime();
     elapsed = current - _lastUpdate;
+
     
     //update the physical position
     _px += _vx * elapsed;
@@ -63,4 +59,20 @@ Ball::display()
 {
     cout << cursorPosition(x(), y()) << reverseVideo << " " << normal;
     cout.flush();
+}
+
+
+double
+Ball::gettime()
+{
+    double t;
+    struct timespec ts;
+
+    clock_gettime(CLOCK_REALTIME, &ts);
+    
+    t = ts.tv_nsec;
+    t /= 1.0e9;
+    t += ts.tv_sec;
+
+    return t;
 }

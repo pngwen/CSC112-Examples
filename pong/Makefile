@@ -6,7 +6,7 @@ TARGETS=paddleTest bigNumberTest pong
 
 all: $(TARGETS)
 paddleTest: $(WIDGET_LIB) paddle.o paddleTest.o
-pong: $(WIDGET_LIB) pong.o main.o 
+pong: $(WIDGET_LIB) pong.o main.o ball.o paddle.o bigNumber.o
 bigNumberTest: $(WIDGET_LIB) bigNumber.o
 bigNumber.o: bigNumber.h bigNumber.cpp
 paddle.o: paddle.cpp paddle.h

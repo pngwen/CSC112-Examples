@@ -5,6 +5,9 @@
 #include "widget.h"
 #include "event.h"
 #include "timer.h"
+#include "ball.h"
+#include "paddle.h"
+#include "bigNumber.h"
 
 class Pong : public Widget
 {
@@ -19,7 +22,19 @@ public:
     virtual void display();
     
 private:
+    void computerMove();
+    void bounce();
+    bool playerScore();
+    bool computerScore();
+    
     Timer t;
+    Ball ball;
+    Paddle player;
+    Paddle computer;
+    int playerPoints;
+    int computerPoints;
+    BigNumber pnum;
+    BigNumber cnum;
 };
 
 #endif
