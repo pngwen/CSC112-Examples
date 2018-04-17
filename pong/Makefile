@@ -1,10 +1,12 @@
 CC=g++
 CXXFLAGS=--std=c++11 -g
-WIDGET_LIB=widget.o term.o application.o keystream.o
-TARGETS=paddleTest bigNumberTest
+LDFLAGS=-lpthread
+WIDGET_LIB=widget.o term.o application.o keystream.o timer.o
+TARGETS=paddleTest bigNumberTest pong
 
 all: $(TARGETS)
 paddleTest: $(WIDGET_LIB) paddle.o paddleTest.o
+pong: $(WIDGET_LIB) pong.o main.o 
 bigNumberTest: $(WIDGET_LIB) bigNumber.o
 bigNumber.o: bigNumber.h bigNumber.cpp
 paddle.o: paddle.cpp paddle.h
