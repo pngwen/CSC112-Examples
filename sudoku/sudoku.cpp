@@ -95,7 +95,7 @@ Sudoku::next()
 
     if(animate()) {
 	ncandidate->display();
-	usleep(100000);
+	usleep(10000);
     }
 
     return ncandidate;

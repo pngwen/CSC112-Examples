@@ -28,7 +28,8 @@ int main()
     do {
         try {
             x = getInt("Enter a number -1 to exit: ");
-        } catch(const invalid_argument &ex) {
+	    throw 5;
+	} catch(const invalid_argument &ex) {
             cerr << "Invalid entry.  Please try again." << endl;
             
             //clear out the wayward input and reset flags
@@ -37,7 +38,11 @@ int main()
             
             //try again
             continue;
-        }
+        } catch (const int &ex) {
+	    cerr << "Caught an int!" << endl;
+	} catch (const exception &ex) {
+	    cerr << "Problem" << endl;
+	}
         if(x != -1) { 
             total+=x;
             count++;
