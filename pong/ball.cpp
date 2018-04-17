@@ -1,5 +1,9 @@
 #include <time.h>
+#include <iostream>
+#include "term.h"
 #include "ball.h"
+
+using namespace std;
 
 Ball::Ball(int _x, int _y) : Widget(_x, _y, 1, 1)
 {
@@ -25,7 +29,7 @@ Ball::Ball() : Ball(40, 12)
 
 //handle the event for the ball
 void
-Ball:handleEvent(Event *e)
+Ball::handleEvent(Event *e)
 {
     //ignore non timer events
     if(e->type() != "tick") return;
